@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Inst.Entities;
 
-namespace Inst.Infrastructure
+namespace Institution.Domain
 {
     class AsignaturaConfig : IEntityTypeConfiguration<AsignaturaEntity>
     {

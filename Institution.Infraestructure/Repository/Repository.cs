@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Inst.Infrastructure
+namespace Institution.Infrastructure
 {
-    class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class
+    public class Repository<TContext, TEntity> : IRepository<TEntity>
+        where TContext : DbContext
+        where TEntity : class
     {
-        readonly InstitutionContext context;
         readonly DbSet<TEntity> entitySet;
         readonly Func<TEntity, EntityEntry<TEntity>> entityEntry;
-        bool disposed = false;
 
-        public Repository(InstitutionContext context)
+        public Repository(IContext<TContext> context)
         {
-            entitySet = context.Set<TEntity>();
-            entityEntry = t => context.Entry(t);
-            this.context = context;
+            entitySet = context.EntitySet<TEntity>();
+            entityEntry = t => context.EntityEntry(t);
         }
 
         public TEntity Create(TEntity entity)
@@ -93,27 +91,6 @@ namespace Inst.Infrastructure
             var queryable = orderBy != null ? orderBy(querySet) : querySet;
 
             return queryable;
-        }
-
-        public int Save() => context.SaveChanges();
-
-        public Task<int> SaveAsync() => context.SaveChangesAsync();
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-                context.Dispose();
-            
-            disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

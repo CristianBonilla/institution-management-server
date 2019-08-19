@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Inst.Entities;
 
-namespace Inst.Infrastructure
+namespace Institution.Domain
 {
     public partial class InstitutionContext : DbContext
     {

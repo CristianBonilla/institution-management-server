@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Inst.Infrastructure
+namespace Institution.Infrastructure
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         TEntity Create(TEntity entity);
         IEnumerable<TEntity> CreateAll(IEnumerable<TEntity> entities);
@@ -21,7 +20,5 @@ namespace Inst.Infrastructure
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             params Expression<Func<TEntity, object>>[] includes);
-        int Save();
-        Task<int> SaveAsync();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Inst.Entities
+﻿namespace Institution.Domain
 {
     public class AlumnoEntity
     {

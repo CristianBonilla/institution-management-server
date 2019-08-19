@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Inst.Entities\Inst.Entities.csproj" />
-    <ProjectReference Include="..\Inst.Services\Inst.Services.csproj" />
+    <ProjectReference Include="..\Inst.Entities\Institution.Domain.csproj" />
+    <ProjectReference Include="..\Inst.Infraestructure\Institution.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

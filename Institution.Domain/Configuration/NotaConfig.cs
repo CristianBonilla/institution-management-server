@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Inst.Entities;
 
-namespace Inst.Infrastructure
+namespace Institution.Domain
 {
     class NotaConfig : IEntityTypeConfiguration<NotaEntity>
     {
@@ -14,7 +13,7 @@ namespace Inst.Infrastructure
                 .ValueGeneratedOnAdd();
             builder.HasOne(o => o.Asignatura)
                 .WithMany()
-                .HasForeignKey(f => f.IdMateria)
+                .HasForeignKey(f => f.IdAsignatura)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(o => o.Alumno)
                 .WithMany()
