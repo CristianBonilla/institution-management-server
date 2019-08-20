@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Institution.Infrastructure
 {
-    public class Repository<TContext, TEntity> : IRepository<TEntity>
+    public class Repository<TContext, TEntity> : IRepository<TContext, TEntity>
         where TContext : DbContext
         where TEntity : class
     {

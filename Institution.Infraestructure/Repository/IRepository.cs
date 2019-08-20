@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Institution.Infrastructure
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<in TContext, TEntity> where TContext : DbContext where TEntity : class
     {
         TEntity Create(TEntity entity);
         IEnumerable<TEntity> CreateAll(IEnumerable<TEntity> entities);

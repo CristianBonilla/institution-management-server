@@ -1,19 +1,23 @@
-﻿using Institution.Infrastructure;
+using System.Linq;
+using System.Collections.Generic;
+using Institution.Infrastructure;
 
 namespace Institution.Domain
 {
-    public class AlumnoService
+    public class AlumnoService : IAlumnoService
     {
         readonly IContext<InstitutionContext> context;
-        readonly IRepository<AlumnoEntity> repository;
+        readonly IRepository<InstitutionContext, AlumnoEntity> repository;
 
         public AlumnoService(
             IContext<InstitutionContext> context,
-            IRepository<AlumnoEntity> repository)
+            IRepository<InstitutionContext, AlumnoEntity> repository)
         {
             this.context = context;
             this.repository = repository;
         }
+
+        public IEnumerable<AlumnoEntity> Get() => repository.Get(orderBy: o => o.OrderBy(b => b.Apellido));
 
         public AlumnoEntity Create(AlumnoEntity alumno)
         {

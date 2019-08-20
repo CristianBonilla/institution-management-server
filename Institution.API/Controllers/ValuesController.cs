@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Institution.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Institution.API.Controllers
@@ -10,11 +11,17 @@ namespace Institution.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IAlumnoService alumnoService;
+        public ValuesController(IAlumnoService alumnoService)
+        {
+            this.alumnoService = alumnoService;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<AlumnoEntity>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(alumnoService.Get());
         }
 
         // GET api/values/5
