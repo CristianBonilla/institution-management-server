@@ -6,11 +6,11 @@ namespace Institution.Domain
 {
     public class AlumnoService : IAlumnoService
     {
-        readonly IContext<InstitutionContext> context;
+        readonly IRepositoryContext<InstitutionContext> context;
         readonly IRepository<InstitutionContext, AlumnoEntity> repository;
 
         public AlumnoService(
-            IContext<InstitutionContext> context,
+            IRepositoryContext<InstitutionContext> context,
             IRepository<InstitutionContext, AlumnoEntity> repository)
         {
             this.context = context;

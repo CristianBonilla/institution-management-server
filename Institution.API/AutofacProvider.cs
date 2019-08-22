@@ -24,8 +24,8 @@ namespace Institution.API
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
             containerBuilder.Populate(services);
-            containerBuilder.RegisterGeneric(typeof(Context<>))
-                .As(typeof(IContext<>));
+            containerBuilder.RegisterGeneric(typeof(RepositoryContext<>))
+                .As(typeof(IRepositoryContext<>));
             containerBuilder.RegisterGeneric(typeof(Repository<,>))
                 .As(typeof(IRepository<,>));
             containerBuilder.RegisterType<AlumnoService>()

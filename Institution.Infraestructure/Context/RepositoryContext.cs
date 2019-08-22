@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Institution.Infrastructure
 {
-    public class Context<TContext> : IDisposable, IContext<TContext> where TContext : DbContext
+    public class RepositoryContext<TContext> : IDisposable, IRepositoryContext<TContext> where TContext : DbContext
     {
         readonly TContext context;
         bool disposed = false;
 
-        public Context(TContext context) => this.context = context;
+        public RepositoryContext(TContext context) => this.context = context;
 
         public EntityEntry<TEntity> EntityEntry<TEntity>(TEntity entity) where TEntity : class
         {

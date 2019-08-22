@@ -14,7 +14,7 @@ namespace Institution.Infrastructure
         readonly DbSet<TEntity> entitySet;
         readonly Func<TEntity, EntityEntry<TEntity>> entityEntry;
 
-        public Repository(IContext<TContext> context)
+        public Repository(IRepositoryContext<TContext> context)
         {
             entitySet = context.EntitySet<TEntity>();
             entityEntry = t => context.EntityEntry(t);
